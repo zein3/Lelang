@@ -10,32 +10,30 @@
 </head>
 <body>
 <!-- NavBar -->
-<div class="container-fluid">
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-		<p class="navbar-brand">Lelang Online</p>
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+	<p class="navbar-brand">Lelang Online</p>
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
 
-		<div class="collapse navbar-collapse" id="mainNav">
-			<ul class="nav navbar-nav mr-auto">
-				<li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-				<li class="nav-item"><a class="nav-link" href="#">Pendataan Barang</a></li>
-				<li class="nav-item"><a class="nav-link" href="#">Penawaran</a></li>
-				<li class="nav-item"><a class="nav-link" href="#">Buka dan Tutup Lelang</a></li>
-				<li class="nav-item"><a class="nav-link" href="#">Generate Laporan</a></li>
-			</ul>
-			<div class="btn-group my-2 my-lg-0">
-				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginModal">
-					Login
-				</button>
-				<button type="button" class="btn btn-success" data-toggle="modal" data-target="#regisModal">
-					Register
-				</button>
-			</div>
+	<div class="collapse navbar-collapse" id="mainNav">
+		<ul class="nav navbar-nav nav-tabs mr-auto">
+			<li class="nav-item"><a class="nav-link text-white" href="#">Home</a></li>
+			<li class="nav-item"><a class="nav-link text-white" href="#">Pendataan Barang</a></li>
+			<li class="nav-item"><a class="nav-link text-white" href="#">Penawaran</a></li>
+			<li class="nav-item"><a class="nav-link text-white" href="#">Buka dan Tutup Lelang</a></li>
+			<li class="nav-item"><a class="nav-link text-white" href="#">Generate Laporan</a></li>
+		</ul>
+		<div class="btn-group my-2 my-lg-0">
+			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginModal">
+				Login
+			</button>
+			<button type="button" class="btn btn-success" data-toggle="modal" data-target="#regisModal">
+				Register
+			</button>
 		</div>
-	</nav>
-</div>
+	</div>
+</nav>
 
 <!-- Login Modal -->
 <div class="modal fade" id="loginModal" tabindex="-1" role="dialog">
@@ -48,8 +46,21 @@
 				</button>
 			</div>
 			<div class="modal-body">
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sit amet neque condimentum, tempor orci id, tempor nibh. Pellentesque id dolor sit amet odio aliquet semper. Donec leo tellus, convallis eget eros at, fermentum rutrum arcu. Integer tempor tellus purus, nec consequat eros dictum sed. Sed vitae dui vitae felis convallis tincidunt. Proin tellus dui, eleifend eget enim vel, tempor egestas lectus. Etiam leo purus, vehicula et risus eget, venenatis tristique dui. Pellentesque in lacinia mi. Curabitur feugiat arcu neque. In non lacus diam. Cras in viverra ligula. Donec id arcu ultricies, euismod erat sit amet, ullamcorper eros. Phasellus nec ultricies massa, et elementum eros.</p>
-				<button type="submit" class="btn btn-primary">Login</button>
+				<form>
+					<div class="form-group row">
+						<label for="login-username" class="col-sm-2 col-form-label">Username</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="login-username" required>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="login-password" class="col-sm-2 col-form-label">Password</label>
+						<div class="col-sm-10">
+							<input type="password" class="form-control" id="login-password" required>
+						</div>
+					</div>
+					<button type="submit" name="login-btn" class="btn btn-primary btn-lg btn-block">Login</button>
+				</form>
 			</div>
 		</div>
 	</div>
@@ -66,8 +77,33 @@
 				</button>
 			</div>
 			<div class="modal-body">
-				<p>Budi Gay</p>
-				<button type="submit" class="btn btn-success">Register</button>
+				<form>
+					<div class="form-group row">
+						<label for="register-name" class="col-sm-2 col-form-label">Name</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="register-name" required>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="register-username" class="col-sm-2 col-form-label">Username</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="register-username" required>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="register-password1" class="col-sm-2 col-form-label">Password</label>
+						<div class="col-sm-10">
+							<input type="password" class="form-control" id="register-password1" required>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="register-password2" class="col-sm-2 col-form-label">Password</label>
+						<div class="col-sm-10">
+							<input type="password" class="form-control" id="register-password2" required>
+						</div>
+					</div>
+					<button type="submit" name="register-btn" class="btn btn-success btn-lg btn-block">Register</button>
+				</form>
 			</div>
 		</div>
 	</div>
