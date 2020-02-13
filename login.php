@@ -23,8 +23,7 @@ if (mysqli_num_rows($query) > 0)
 }
 else
 {
-	echo 'salah password';
-	echo $password;
+	header('Location: inde.php?err=salah');
 }
 
 ?>

@@ -15,6 +15,10 @@ if (isset($_GET['err']))
 		// Change Modal_Error Text Here
 		echo 'nama dah ada';
 	}
+	else if ($error == 'salah')
+	{
+		// Change Modal_Error Text Here
+	}
 	//Show Modal_Error Here
 }
 
@@ -73,9 +77,18 @@ if (isset($_GET['success']))
 		?>
 
 		<!-- Logout Button dan Search Form -->
-		<div class="">
-		
-		</div>
+		<?php
+		if (isset($_SESSION['name']))
+		{
+			echo '	<div class="my-2 my-lg-0">
+						<form class="form-inline">
+							<input class="form-control mr-sm-2" type="search" placeholder="search" aria-label="Search">
+							<button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
+							<a class="btn btn-danger" style="margin-left: 3px;" href="logout.php">Log out</a>
+						</form>
+					</div>';
+		}
+		?>
 	</div>
 </nav>
 
@@ -147,7 +160,7 @@ if (isset($_GET['success']))
 						</div>
 					</div>
 					<div class="form-group row">
-						<label for="register-password2" class="col-sm-2 col-form-label">Password</label>
+						<label for="register-password2" class="col-sm-2 col-form-label">Confirm Password</label>
 						<div class="col-sm-10">
 							<input type="password" class="form-control" id="register-password2" name="register-password2" maxlength="25" required>
 						</div>
