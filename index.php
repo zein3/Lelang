@@ -1,3 +1,34 @@
+<?php
+
+session_start();
+
+if (isset($_GET['err']))
+{
+	$error = $_GET['err'];
+	if ($error == 'passconfirm')
+	{
+		// Change Modal_Error Text Here
+		echo 'pass salah';
+	}
+	else if ($error == 'nameexist')
+	{
+		// Change Modal_Error Text Here
+		echo 'nama dah ada';
+	}
+	//Show Modal_Error Here
+}
+
+if (isset($_GET['success']))
+{
+	$success = $_GET['success'];
+	if ($success == 'pendaftaran');
+	{
+		// Change Modal_success Text Here
+	}
+	// Show Modal_sucess Here
+}
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,6 +48,7 @@
 	</button>
 
 	<div class="collapse navbar-collapse" id="mainNav">
+		<!-- Navbar Menu/Link -->
 		<ul class="nav navbar-nav nav-tabs mr-auto">
 			<li class="nav-item"><a class="nav-link text-white" href="#">Home</a></li>
 			<li class="nav-item"><a class="nav-link text-white" href="#">Pendataan Barang</a></li>
@@ -24,6 +56,8 @@
 			<li class="nav-item"><a class="nav-link text-white" href="#">Buka dan Tutup Lelang</a></li>
 			<li class="nav-item"><a class="nav-link text-white" href="#">Generate Laporan</a></li>
 		</ul>
+
+		<!-- Login and Register Button -->
 		<div class="btn-group my-2 my-lg-0">
 			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginModal">
 				Login
@@ -77,29 +111,35 @@
 				</button>
 			</div>
 			<div class="modal-body">
-				<form>
+				<form action="register.php" method="post">
 					<div class="form-group row">
 						<label for="register-name" class="col-sm-2 col-form-label">Name</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="register-name" required>
+							<input type="text" class="form-control" id="register-name" name="register-name" maxlength="25" required>
 						</div>
 					</div>
 					<div class="form-group row">
 						<label for="register-username" class="col-sm-2 col-form-label">Username</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="register-username" required>
+							<input type="text" class="form-control" id="register-username" name="register-username" maxlength="25" required>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="register-telp" class="col-sm-2 col-form-label">Phone Number</label>
+						<div class="col-sm-10">
+							<input type="number" class="form-control" id="register-telp" name="register-telp" maxlength="25" required>
 						</div>
 					</div>
 					<div class="form-group row">
 						<label for="register-password1" class="col-sm-2 col-form-label">Password</label>
 						<div class="col-sm-10">
-							<input type="password" class="form-control" id="register-password1" required>
+							<input type="password" class="form-control" id="register-password1" name="register-password1" maxlength="25" required>
 						</div>
 					</div>
 					<div class="form-group row">
 						<label for="register-password2" class="col-sm-2 col-form-label">Password</label>
 						<div class="col-sm-10">
-							<input type="password" class="form-control" id="register-password2" required>
+							<input type="password" class="form-control" id="register-password2" name="register-password2" maxlength="25" required>
 						</div>
 					</div>
 					<button type="submit" name="register-btn" class="btn btn-success btn-lg btn-block">Register</button>
