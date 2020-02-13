@@ -58,13 +58,23 @@ if (isset($_GET['success']))
 		</ul>
 
 		<!-- Login and Register Button -->
-		<div class="btn-group my-2 my-lg-0">
-			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginModal">
-				Login
-			</button>
-			<button type="button" class="btn btn-success" data-toggle="modal" data-target="#regisModal">
-				Register
-			</button>
+		<?php 
+		if (!isset($_SESSION['name']))
+		{
+			echo '<div class="btn-group my-2 my-lg-0">
+					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginModal">
+						Login
+					</button>
+					<button type="button" class="btn btn-success" data-toggle="modal" data-target="#regisModal">
+						Register
+					</button>
+				</div>';
+		}
+		?>
+
+		<!-- Logout Button dan Search Form -->
+		<div class="">
+		
 		</div>
 	</div>
 </nav>
@@ -80,17 +90,17 @@ if (isset($_GET['success']))
 				</button>
 			</div>
 			<div class="modal-body">
-				<form>
+				<form action="login.php" method="post">
 					<div class="form-group row">
 						<label for="login-username" class="col-sm-2 col-form-label">Username</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="login-username" required>
+							<input type="text" class="form-control" id="login-username" name="login-username" required>
 						</div>
 					</div>
 					<div class="form-group row">
 						<label for="login-password" class="col-sm-2 col-form-label">Password</label>
 						<div class="col-sm-10">
-							<input type="password" class="form-control" id="login-password" required>
+							<input type="password" class="form-control" id="login-password" name="login-password" required>
 						</div>
 					</div>
 					<button type="submit" name="login-btn" class="btn btn-primary btn-lg btn-block">Login</button>
