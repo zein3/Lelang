@@ -28,9 +28,6 @@ if (mysqli_num_rows($check) > 0)
 	return;
 }
 
-//Enkripsi Password dengan md5, kalo enkripsi yang bagus lagi ga tau caranya, yang penting projek selesai soalnya mau UN
-$password = md5($password1, "asdfasdf");
-
 //Query untuk memasukkan data user ke Database
 $query = "Insert Into tb_masyarakat(nama_lengkap, username, password, telp) Values('$nama_lengkap', '$username', '$password', '$telp')";
 if (mysqli_query($connection, $query))

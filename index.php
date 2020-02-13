@@ -65,14 +65,8 @@ if (isset($_GET['success']))
 		<?php 
 		if (!isset($_SESSION['name']))
 		{
-			echo '<div class="btn-group my-2 my-lg-0">
-					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginModal">
-						Login
-					</button>
-					<button type="button" class="btn btn-success" data-toggle="modal" data-target="#regisModal">
-						Register
-					</button>
-				</div>';
+			// Berisi tombol login dan register
+			include 'ui/nav_logged_out.php';
 		}
 		?>
 
@@ -80,13 +74,8 @@ if (isset($_GET['success']))
 		<?php
 		if (isset($_SESSION['name']))
 		{
-			echo '	<div class="my-2 my-lg-0">
-						<form class="form-inline">
-							<input class="form-control mr-sm-2" type="search" placeholder="search" aria-label="Search">
-							<button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
-							<a class="btn btn-danger" style="margin-left: 3px;" href="logout.php">Log out</a>
-						</form>
-					</div>';
+			// Berisi form search dan tombol log out
+			include 'ui/nav_logged_in.php';
 		}
 		?>
 	</div>
@@ -102,8 +91,8 @@ if (isset($_GET['success']))
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
-			<div class="modal-body">
-				<form action="login.php" method="post">
+			<form action="login.php" method="post">
+				<div class="modal-body">
 					<div class="form-group row">
 						<label for="login-username" class="col-sm-2 col-form-label">Username</label>
 						<div class="col-sm-10">
@@ -116,9 +105,11 @@ if (isset($_GET['success']))
 							<input type="password" class="form-control" id="login-password" name="login-password" required>
 						</div>
 					</div>
+				</div>
+				<div class="modal-footer">
 					<button type="submit" name="login-btn" class="btn btn-primary btn-lg btn-block">Login</button>
-				</form>
-			</div>
+				</div>
+			</form>
 		</div>
 	</div>
 </div>
@@ -133,8 +124,8 @@ if (isset($_GET['success']))
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
-			<div class="modal-body">
-				<form action="register.php" method="post">
+			<form action="register.php" method="post">
+				<div class="modal-body">
 					<div class="form-group row">
 						<label for="register-name" class="col-sm-2 col-form-label">Name</label>
 						<div class="col-sm-10">
@@ -150,7 +141,7 @@ if (isset($_GET['success']))
 					<div class="form-group row">
 						<label for="register-telp" class="col-sm-2 col-form-label">Phone Number</label>
 						<div class="col-sm-10">
-							<input type="number" class="form-control" id="register-telp" name="register-telp" maxlength="25" required>
+							<input type="number" class="form-control" id="register-telp" name="register-telp" minlength="2" maxlength="25" required>
 						</div>
 					</div>
 					<div class="form-group row">
@@ -165,9 +156,11 @@ if (isset($_GET['success']))
 							<input type="password" class="form-control" id="register-password2" name="register-password2" maxlength="25" required>
 						</div>
 					</div>
+				</div>
+				<div class="modal-footer">
 					<button type="submit" name="register-btn" class="btn btn-success btn-lg btn-block">Register</button>
-				</form>
-			</div>
+				</div>
+			</from>
 		</div>
 	</div>
 </div>
