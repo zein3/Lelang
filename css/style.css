@@ -2,6 +2,62 @@
 github.com/Zein-Haddad
 */
 
+body { padding-top: 70px; }
+@media screen and (max-width: 768px) {
+    body { padding-top: 70px; }
+}
+
 .text-white {
 	color: #fff;
+}
+
+.nav-tabs .nav-link.active,
+.nav-tabs .nav-item.show .nav-link {
+  color: #fff;
+  background-color: #1e1f62;
+  border-color: #dbeefd;
+}
+
+.bg-1 {
+  background-color: #070d2f;
+}
+
+.bg-2 {
+  background-color: #1e1f62;
+}
+
+.bg-3 {
+  background-color: #546cd0;
+}
+
+.bg-4 {
+  background-color: #98bbff;
+}
+
+.bg-5 {
+  background-color: #dbffed;
+}
+
+.btn-darkblue {
+  color: #fff;
+  background-color: #1e1f62;
+  border-color: #070d2f;
+}
+
+.btn-darkblue:hover {
+  color: #fff;
+  background-color: #546cd0;
+  border-color: #1e1f62;
+}
+
+.btn-blue {
+  color: #fff;
+  background-color: #546cd0;
+  border-color: #1e1f62;
+}
+
+.btn-blue:hover {
+  color: #fff;
+  background-color: #98bbff;
+  border-color: #546cd0;
 }

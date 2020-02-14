@@ -43,9 +43,9 @@ if (isset($_GET['success']))
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
-<body>
+<body class="bg-5">
 <!-- NavBar -->
-<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-1">
 	<p class="navbar-brand">Lelang Online</p>
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
@@ -54,11 +54,26 @@ if (isset($_GET['success']))
 	<div class="collapse navbar-collapse" id="mainNav">
 		<!-- Navbar Menu/Link -->
 		<ul class="nav navbar-nav nav-tabs mr-auto">
-			<li class="nav-item"><a class="nav-link text-white" href="#">Home</a></li>
-			<li class="nav-item"><a class="nav-link text-white" href="#">Pendataan Barang</a></li>
-			<li class="nav-item"><a class="nav-link text-white" href="#">Penawaran</a></li>
-			<li class="nav-item"><a class="nav-link text-white" href="#">Buka dan Tutup Lelang</a></li>
-			<li class="nav-item"><a class="nav-link text-white" href="#">Generate Laporan</a></li>
+			<li class="nav-item"><a class="nav-link text-white active" id="home-tab" data-toggle="tab" href="#home">Home</a></li>
+
+			<?php
+			if (isset($_SESSION['level']))
+			{
+				if ($_SESSION['level'] == "masyarakat")
+				{
+					include 'ui/nav_menu/masyarakat.php';
+				}
+				else if ($_SESSION['level'] == "admin")
+				{
+					include 'ui/nav_menu/admin_atau_petugas.php';
+				}
+				else if ($_SESSION['level'] == "petugas")
+				{
+					include 'ui/nav_menu/petugas.php';
+					include 'ui/nav_menu/admin_atau_petugas.php';
+				}
+			}
+			?>
 		</ul>
 
 		<!-- Login and Register Button -->
@@ -85,9 +100,9 @@ if (isset($_GET['success']))
 <div class="modal fade" id="loginModal" tabindex="-1" role="dialog">
 	<div class="modal-dialog">
 		<div class="modal-content">
-			<div class="modal-header bg-primary">
-				<h5 class="modal-title">Login</h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			<div class="modal-header bg-2">
+				<h5 class="modal-title text-white">Login</h5>
+				<button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
@@ -107,7 +122,7 @@ if (isset($_GET['success']))
 					</div>
 				</div>
 				<div class="modal-footer">
-					<button type="submit" name="login-btn" class="btn btn-primary btn-lg btn-block">Login</button>
+					<button type="submit" name="login-btn" class="btn btn-darkblue btn-lg btn-block">Login</button>
 				</div>
 			</form>
 		</div>
@@ -118,9 +133,9 @@ if (isset($_GET['success']))
 <div class="modal fade" id="regisModal" tabindex="-1" role="dialog">
 	<div class="modal-dialog">
 		<div class="modal-content">
-			<div class="modal-header bg-success">
-				<h5 class="modal-title">Register</h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			<div class="modal-header bg-3">
+				<h5 class="modal-title text-white">Register</h5>
+				<button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
@@ -158,9 +173,27 @@ if (isset($_GET['success']))
 					</div>
 				</div>
 				<div class="modal-footer">
-					<button type="submit" name="register-btn" class="btn btn-success btn-lg btn-block">Register</button>
+					<button type="submit" name="register-btn" class="btn btn-blue btn-lg btn-block">Register</button>
 				</div>
 			</from>
+		</div>
+	</div>
+</div>
+
+<!-- Konten Tab -->
+<div class="container">
+	<div class="tab-content">
+		<div class="tab-pane fade show active" id="home">
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vestibulum tincidunt mauris quis mattis. Nullam gravida est id risus interdum interdum. Vivamus et posuere diam, at semper velit. Suspendisse quam augue, placerat sit amet iaculis quis, porta rutrum elit. Donec tempor nisl ut eleifend iaculis. Fusce consectetur ipsum in sapien laoreet tincidunt. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vestibulum at nibh tincidunt, feugiat lectus et, congue felis. Pellentesque convallis lobortis finibus. Quisque dictum nec velit posuere rutrum.</p>
+		</div>
+		<div class="tab-pane fade" id="pendataan">
+			<p>Nunc eu risus est. Nunc ac dolor nec tellus scelerisque dignissim. Vivamus ac rutrum tortor. Mauris volutpat molestie dolor, nec fermentum odio volutpat at. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque dignissim ante quis ante fringilla pellentesque. Quisque scelerisque augue sed metus pellentesque finibus. Integer id cursus felis. Sed finibus tellus id varius luctus. Nunc rutrum at nunc sed egestas. In hac habitasse platea dictumst. Nulla elementum diam in lacus imperdiet finibus. Quisque convallis dolor leo, a euismod erat vestibulum id. Nulla id urna risus.</p>
+		</div>
+		<div class="tab-pane fade" id="laporan">
+			<p>Curabitur vitae dui id nisi blandit molestie. Phasellus vel enim sapien. Mauris tincidunt nunc nec magna pharetra viverra. Phasellus euismod tempus quam, eu volutpat felis ultricies eu. Nam ut tincidunt augue, vitae ultricies mauris. Nunc non ligula quis enim tincidunt faucibus. Donec aliquet fermentum sapien eget suscipit. Mauris maximus risus a sagittis sodales. In consectetur felis vel massa blandit, et vulputate erat pellentesque.</p>
+		</div>
+		<div class="tab-pane fade" id="pengaturan-lelang">
+			<p>Tes</p>
 		</div>
 	</div>
 </div>
