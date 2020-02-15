@@ -121,33 +121,33 @@ if (isset($_GET['success']))
 			</div>
 			<form action="register.php" method="post">
 				<div class="modal-body">
-					<div class="form-group row">
-						<label for="register-name" class="col-sm-2 col-form-label">Name</label>
-						<div class="col-sm-10">
+					<div class="form-group">
+						<label for="register-name">Name</label>
+						<div>
 							<input type="text" class="form-control" id="register-name" name="register-name" maxlength="25" required>
 						</div>
 					</div>
-					<div class="form-group row">
-						<label for="register-username" class="col-sm-2 col-form-label">Username</label>
-						<div class="col-sm-10">
+					<div class="form-group">
+						<label for="register-username">Username</label>
+						<div>
 							<input type="text" class="form-control" id="register-username" name="register-username" maxlength="25" required>
 						</div>
 					</div>
-					<div class="form-group row">
-						<label for="register-telp" class="col-sm-2 col-form-label">Phone Number</label>
-						<div class="col-sm-10">
-							<input type="number" class="form-control" id="register-telp" name="register-telp" minlength="2" maxlength="25" required>
+					<div class="form-group">
+						<label for="register-telp">Phone Number</label>
+						<div>
+							<input type="tel" class="form-control" id="register-telp" name="register-telp" minlength="2" maxlength="25" required>
 						</div>
 					</div>
-					<div class="form-group row">
-						<label for="register-password1" class="col-sm-2 col-form-label">Password</label>
-						<div class="col-sm-10">
+					<div class="form-group">
+						<label for="register-password1">Password</label>
+						<div>
 							<input type="password" class="form-control" id="register-password1" name="register-password1" maxlength="25" required>
 						</div>
 					</div>
-					<div class="form-group row">
-						<label for="register-password2" class="col-sm-2 col-form-label">Confirm Password</label>
-						<div class="col-sm-10">
+					<div class="form-group">
+						<label for="register-password2">Confirm Password</label>
+						<div>
 							<input type="password" class="form-control" id="register-password2" name="register-password2" maxlength="25" required>
 						</div>
 					</div>
@@ -155,7 +155,7 @@ if (isset($_GET['success']))
 				<div class="modal-footer">
 					<button type="submit" name="register-btn" class="btn btn-blue btn-lg btn-block">Register</button>
 				</div>
-			</from>
+			</form>
 		</div>
 	</div>
 </div>

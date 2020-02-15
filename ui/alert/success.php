@@ -9,6 +9,10 @@
 						{
 							echo 'Selamat! Anda berhasil mendaftar, silahkan login';
 						}
+						else if ($success == 'datamasuk')
+						{
+							echo 'Data berhasil dimasukkan';
+						}
 						else
 						{
 
