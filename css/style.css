@@ -2,9 +2,9 @@
 github.com/Zein-Haddad
 */
 
-body { padding-top: 70px; }
+body { padding-top: 75px; }
 @media screen and (max-width: 768px) {
-    body { padding-top: 70px; }
+    body { padding-top: 75px; }
 }
 
 .text-white {

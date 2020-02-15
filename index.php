@@ -80,7 +80,7 @@ if (isset($_GET['success']))
 <div class="modal fade" id="loginModal" tabindex="-1" role="dialog">
 	<div class="modal-dialog">
 		<div class="modal-content">
-			<div class="modal-header bg-2">
+			<div class="modal-header bg-3">
 				<h5 class="modal-title text-white">Login</h5>
 				<button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
@@ -102,7 +102,7 @@ if (isset($_GET['success']))
 					</div>
 				</div>
 				<div class="modal-footer">
-					<button type="submit" name="login-btn" class="btn btn-darkblue btn-lg btn-block">Login</button>
+					<button type="submit" name="login-btn" class="btn btn-blue btn-lg btn-block">Login</button>
 				</div>
 			</form>
 		</div>
@@ -167,7 +167,9 @@ if (isset($_GET['success']))
 			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vestibulum tincidunt mauris quis mattis. Nullam gravida est id risus interdum interdum. Vivamus et posuere diam, at semper velit. Suspendisse quam augue, placerat sit amet iaculis quis, porta rutrum elit. Donec tempor nisl ut eleifend iaculis. Fusce consectetur ipsum in sapien laoreet tincidunt. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vestibulum at nibh tincidunt, feugiat lectus et, congue felis. Pellentesque convallis lobortis finibus. Quisque dictum nec velit posuere rutrum.</p>
 		</div>
 		<div class="tab-pane fade" id="pendataan">
-			<p>Nunc eu risus est. Nunc ac dolor nec tellus scelerisque dignissim. Vivamus ac rutrum tortor. Mauris volutpat molestie dolor, nec fermentum odio volutpat at. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque dignissim ante quis ante fringilla pellentesque. Quisque scelerisque augue sed metus pellentesque finibus. Integer id cursus felis. Sed finibus tellus id varius luctus. Nunc rutrum at nunc sed egestas. In hac habitasse platea dictumst. Nulla elementum diam in lacus imperdiet finibus. Quisque convallis dolor leo, a euismod erat vestibulum id. Nulla id urna risus.</p>
+			<?php
+			include 'tab/pendataan.php';
+			?>
 		</div>
 		<div class="tab-pane fade" id="laporan">
 			<p>Curabitur vitae dui id nisi blandit molestie. Phasellus vel enim sapien. Mauris tincidunt nunc nec magna pharetra viverra. Phasellus euismod tempus quam, eu volutpat felis ultricies eu. Nam ut tincidunt augue, vitae ultricies mauris. Nunc non ligula quis enim tincidunt faucibus. Donec aliquet fermentum sapien eget suscipit. Mauris maximus risus a sagittis sodales. In consectetur felis vel massa blandit, et vulputate erat pellentesque.</p>
@@ -176,6 +178,12 @@ if (isset($_GET['success']))
 			<p>Tes</p>
 		</div>
 	</div>
+
+	<hr>
+
+	<footer>
+		<p>&copy; Ahmad Zein Haddad</p>
+	</footer>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
