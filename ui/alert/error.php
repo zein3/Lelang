@@ -17,6 +17,10 @@
 						{
 							echo 'Username atau Password salah!';
 						}
+						else if ($error == 'harusid')
+						{
+							echo 'ID Harus di isi!';
+						}
 					?>
 				</h3>
 				<button type="button" class="close text-white" data-dismiss="modal" aria-label="close">

@@ -13,9 +13,13 @@
 						{
 							echo 'Data berhasil dimasukkan';
 						}
-						else
+						else if ($success == 'dataubah')
 						{
-
+							echo 'Data berhasil diubah';
+						}
+						else if ($success == 'datahapus')
+						{
+							echo 'Data berhasil dihapus';
 						}
 					?>
 				</h3>
