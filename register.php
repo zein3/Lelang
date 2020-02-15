@@ -20,13 +20,15 @@ if ($password1 != $password2)
 
 //Mengecek apakah nama lengkap atau username sudah dipakai user lain
 $checkQuery = "Select * From tb_masyarakat Where nama_lengkap='$nama_lengkap' Or username='$username'";
-$check = mysqli_query($connection);
+$check = mysqli_query($connection, $checkQuery);
 
 if (mysqli_num_rows($check) > 0)
 {
 	header('Location: index.php?err=nameexist');
 	return;
 }
+
+$password = $password1;
 
 //Query untuk memasukkan data user ke Database
 $query = "Insert Into tb_masyarakat(nama_lengkap, username, password, telp) Values('$nama_lengkap', '$username', '$password', '$telp')";

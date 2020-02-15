@@ -2,7 +2,7 @@
 	<button type="button" class="btn btn-darkblue" data-toggle="modal" data-target="#loginModal">
 		Login
 	</button>
-	<button type="button" class="btn btn-blue" data-toggle="modal" data-target="#regisModal">
+	<button type="button" class="btn btn-darkblue" data-toggle="modal" data-target="#regisModal">
 		Register
 	</button>
 </div>

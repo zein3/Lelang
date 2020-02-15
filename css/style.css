@@ -50,6 +50,10 @@ body { padding-top: 70px; }
   border-color: #1e1f62;
 }
 
+.btn-darkblue:focus, .btn-darkblue.focus {
+  box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.5);
+}
+
 .btn-blue {
   color: #fff;
   background-color: #546cd0;
@@ -58,6 +62,10 @@ body { padding-top: 70px; }
 
 .btn-blue:hover {
   color: #fff;
-  background-color: #98bbff;
-  border-color: #546cd0;
+  background-color: #1e1f62;
+  border-color: #070d2f;
+}
+
+.btn-blue:focus, .btn-blue.focus {
+  box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.5);
 }

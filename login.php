@@ -47,11 +47,11 @@ if (mysqli_num_rows($query) > 0)
 		$_SESSION['level'] = 'masyarakat';
 	}
 
-	header('Location: index.php?success=masuk');
+	header('Location: index.php');
 }
 else
 {
-	header('Location: inde.php?err=salah');
+	header('Location: index.php?err=salah');
 }
 
 ?>

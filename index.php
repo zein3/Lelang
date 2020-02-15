@@ -4,32 +4,12 @@ session_start();
 
 if (isset($_GET['err']))
 {
-	$error = $_GET['err'];
-	if ($error == 'passconfirm')
-	{
-		// Change Modal_Error Text Here
-		echo 'pass salah';
-	}
-	else if ($error == 'nameexist')
-	{
-		// Change Modal_Error Text Here
-		echo 'nama dah ada';
-	}
-	else if ($error == 'salah')
-	{
-		// Change Modal_Error Text Here
-	}
-	//Show Modal_Error Here
+	include 'ui/alert/error.php';
 }
 
 if (isset($_GET['success']))
 {
-	$success = $_GET['success'];
-	if ($success == 'pendaftaran');
-	{
-		// Change Modal_success Text Here
-	}
-	// Show Modal_sucess Here
+	include 'ui/alert/success.php';
 }
 
 ?>
@@ -43,7 +23,7 @@ if (isset($_GET['success']))
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
-<body class="bg-5">
+<body>
 <!-- NavBar -->
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-1">
 	<p class="navbar-brand">Lelang Online</p>
