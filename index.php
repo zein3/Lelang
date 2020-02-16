@@ -36,6 +36,7 @@ session_start();
 				else if ($_SESSION['level'] == "admin")
 				{
 					include 'ui/nav_menu/admin_atau_petugas.php';
+					include 'ui/nav_menu/admin.php';
 				}
 				else if ($_SESSION['level'] == "petugas")
 				{
@@ -166,6 +167,11 @@ session_start();
 		</div>
 		<div class="tab-pane fade" id="pengaturan-lelang">
 			<p>Tes</p>
+		</div>
+		<div class="tab-pane fade" id="daftarpetugas">
+			<?php
+			include 'tab/daftarpetugas.php';
+			?>
 		</div>
 	</div>
 

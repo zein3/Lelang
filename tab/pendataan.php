@@ -1,5 +1,5 @@
 <div class="row">
-	<div class="col">
+	<div class="col jumbotron">
 		<form action="tb_barang.php" method="post">
 			<div class="form-group">
 				<label for="tb-barang_id">ID Barang</label>
