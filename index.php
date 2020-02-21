@@ -166,7 +166,9 @@ session_start();
 			<p>Curabitur vitae dui id nisi blandit molestie. Phasellus vel enim sapien. Mauris tincidunt nunc nec magna pharetra viverra. Phasellus euismod tempus quam, eu volutpat felis ultricies eu. Nam ut tincidunt augue, vitae ultricies mauris. Nunc non ligula quis enim tincidunt faucibus. Donec aliquet fermentum sapien eget suscipit. Mauris maximus risus a sagittis sodales. In consectetur felis vel massa blandit, et vulputate erat pellentesque.</p>
 		</div>
 		<div class="tab-pane fade" id="pengaturan-lelang">
-			<p>Tes</p>
+			<?php
+			include 'tab/pengaturan_lelang.php';
+			?>
 		</div>
 		<div class="tab-pane fade" id="daftarpetugas">
 			<?php
