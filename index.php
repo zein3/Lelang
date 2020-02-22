@@ -155,7 +155,9 @@ session_start();
 <div class="container">
 	<div class="tab-content">
 		<div class="tab-pane fade show active" id="home">
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vestibulum tincidunt mauris quis mattis. Nullam gravida est id risus interdum interdum. Vivamus et posuere diam, at semper velit. Suspendisse quam augue, placerat sit amet iaculis quis, porta rutrum elit. Donec tempor nisl ut eleifend iaculis. Fusce consectetur ipsum in sapien laoreet tincidunt. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vestibulum at nibh tincidunt, feugiat lectus et, congue felis. Pellentesque convallis lobortis finibus. Quisque dictum nec velit posuere rutrum.</p>
+			<?php
+			include 'tab/pelelangan.php';
+			?>
 		</div>
 		<div class="tab-pane fade" id="pendataan">
 			<?php
