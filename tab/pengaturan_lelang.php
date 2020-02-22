@@ -24,7 +24,11 @@
 		$dilelang = false;
 		if (mysqli_num_rows($queryCekLelang) > 0)
 		{
-			$dilelang = true;
+			$datalelang = mysqli_fetch_assoc($queryCekLelang);
+			if ($datalelang['status'] == 'dibuka')
+			{
+				$dilelang = true;
+			}
 		}
 
 		$harga_rupiah = "Rp" . number_format($data['harga_awal'],2,',','.');
