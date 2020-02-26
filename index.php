@@ -14,6 +14,10 @@ session_start();
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="js/bootstrap.min.js"></script>
+
 <!-- NavBar -->
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-1">
 	<p class="navbar-brand">Lelang Online</p>
@@ -115,13 +119,13 @@ session_start();
 					<div class="form-group">
 						<label for="register-name">Name</label>
 						<div>
-							<input type="text" class="form-control" id="register-name" name="register-name" maxlength="25" required>
+							<input type="text" class="form-control" id="register-name" name="register-name" minlength="4" maxlength="25" required>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="register-username">Username</label>
 						<div>
-							<input type="text" class="form-control" id="register-username" name="register-username" maxlength="25" required>
+							<input type="text" class="form-control" id="register-username" name="register-username" minlength="4" maxlength="25" required>
 						</div>
 					</div>
 					<div class="form-group">
@@ -133,13 +137,13 @@ session_start();
 					<div class="form-group">
 						<label for="register-password1">Password</label>
 						<div>
-							<input type="password" class="form-control" id="register-password1" name="register-password1" maxlength="25" required>
+							<input type="password" class="form-control" id="register-password1" name="register-password1" minlength="8" required>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="register-password2">Confirm Password</label>
 						<div>
-							<input type="password" class="form-control" id="register-password2" name="register-password2" maxlength="25" required>
+							<input type="password" class="form-control" id="register-password2" name="register-password2" minlength="8" required>
 						</div>
 					</div>
 				</div>
@@ -186,8 +190,7 @@ session_start();
 	</footer>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="js/bootstrap.min.js"></script>
+
 
 <?php
 

@@ -48,7 +48,8 @@
 
 			echo '<p class="card-text">' . $data_barang['deskripsi_barang'] . '</p>';
 
-			echo '<a class="btn btn-primary btn-block" href="#">Ajukan tawaran</a>';
+			$id_lelang = $data['id_lelang'];
+			echo '<button class="btn btn-primary btn-block" onclick="tawar(' . $id_lelang . ')">Ajukan tawaran</button>';
 
 			echo '</div>';
 			echo '</div>';
@@ -57,3 +58,26 @@
 		?>
 	</div>
 </div>
+
+<p id="nama_user" style="display: none;">
+	<?php
+	if (isset($_SESSION['name']))
+	{
+		echo $_SESSION['name'];
+	}
+	?>
+</p>
+
+<script>
+function tawar(id)
+{
+	var user = document.getElementById('nama_user').innerHTML;
+
+	if (user.toString().length < 4)
+	{
+		alert('Anda harus login!');
+		$('#loginModal').modal('show');
+		return;
+	}
+}
+</script>
