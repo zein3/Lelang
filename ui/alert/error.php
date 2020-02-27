@@ -21,6 +21,14 @@
 						{
 							echo 'ID Harus di isi!';
 						}
+						else if ($error == 'takbisatawar')
+						{
+							echo 'Admin atau Petugas tidak bisa mengajukan penawaran';
+						}
+						else if ($error == 'error')
+						{
+							echo 'Maaf, ada kesalahan pada sistem';
+						}
 					?>
 				</h3>
 				<button type="button" class="close text-white" data-dismiss="modal" aria-label="close">

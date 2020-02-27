@@ -65,14 +65,12 @@
 	</div>
 </div>
 
-<p id="nama_user" style="display: none;">
-	<?php
+<p id="nama_user" style="display: none;"><?php
 	if (isset($_SESSION['name']))
 	{
 		echo $_SESSION['name'];
 	}
-	?>
-</p>
+	?></p>
 
 <script>
 function tawar(id, nama_barang, deskripsi_barang, id_barang, harga_minimal, harga_awal)

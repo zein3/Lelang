@@ -38,6 +38,8 @@
 						<div>
 							<input type="text" class="form-control-plaintext" id="tawar-nama_barang" name="tawar-nama_barang" readonly>
 							<input type="text" id="tawar-id_barang" name="tawar-id_barang" readonly style="display: none;">
+							<input type="text" id="nama_user_penawaran" name="tawar-user" readonly style="display: none;">
+							<input type="text" id="id_lelang" name="id_lelang" readonly style="display: none;">
 						</div>
 					</div>
 					<div class="form-group">
@@ -55,16 +57,16 @@
 	</div>
 </div>
 
-<p style="display: none;" id="id_lelang"></p>
-<p style="display: none;" id="nama_user_penawaran"></p>
+<!--<p style="display: none;" id="id_lelang"></p>
+<p style="display: none;" id="nama_user_penawaran"></p>-->
 
 <script>
 function aturBarang (nama_barang, deskripsi_barang, id_lelang, nama_user, id_barang, harga_minimal, harga_awal)
 {
 	document.getElementById('nama_barang').innerHTML = nama_barang.toString();
 	document.getElementById('deskripsi_barang').innerHTML = deskripsi_barang.toString();
-	document.getElementById('id_lelang').innerHTML = id_lelang;
-	document.getElementById('nama_user_penawaran').innerHTML = nama_user;
+	document.getElementById('id_lelang').value = id_lelang;
+	document.getElementById('nama_user_penawaran').value = nama_user;
 	document.getElementById('harga_awal').innerHTML = "Harga Awal: " + formatRupiah(harga_awal.toString(), 'Rp.');
 
 	document.getElementById('tawar-nama_barang').value = nama_barang.toString();
