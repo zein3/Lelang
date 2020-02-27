@@ -48,8 +48,12 @@
 
 			echo '<p class="card-text">' . $data_barang['deskripsi_barang'] . '</p>';
 
+			// Mengumpulkan data yang diperlukan untuk membuat button
 			$id_lelang = $data['id_lelang'];
-			echo '<button class="btn btn-primary btn-block" onclick="tawar(' . $id_lelang . ')">Ajukan tawaran</button>';
+			$nama_barang = $data_barang['nama_barang'];
+			$deskripsi_barang = $data_barang['deskripsi_barang'];
+			$arguments = "'" . $nama_barang . "', '" . $deskripsi_barang . "'";
+			echo '<button class="btn btn-primary btn-block" onclick="tawar(' . $id_lelang . ', ' . $arguments . ')">Ajukan tawaran</button>';
 
 			echo '</div>';
 			echo '</div>';
@@ -69,7 +73,7 @@
 </p>
 
 <script>
-function tawar(id)
+function tawar(id, nama_barang, deskripsi_barang)
 {
 	var user = document.getElementById('nama_user').innerHTML;
 
@@ -79,5 +83,8 @@ function tawar(id)
 		$('#loginModal').modal('show');
 		return;
 	}
+
+	$('#mainNav li:last-child a').tab('show');
+	aturBarang(nama_barang, deskripsi_barang, id, user);
 }
 </script>

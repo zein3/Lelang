@@ -49,6 +49,8 @@ session_start();
 				}
 			}
 			?>
+
+			<li class="nav-item" style="display: none;"><a class="nav-link" id="tawar-tab" data-toggle="tab" href="#penawaran"></a></li>
 		</ul>
 
 		<!-- Login and Register Button -->
@@ -179,6 +181,11 @@ session_start();
 		<div class="tab-pane fade" id="daftarpetugas">
 			<?php
 			include 'tab/daftarpetugas.php';
+			?>
+		</div>
+		<div class="tab-pane fade" id="penawaran">
+			<?php
+			include 'tab/penawaran.php';
 			?>
 		</div>
 	</div>
