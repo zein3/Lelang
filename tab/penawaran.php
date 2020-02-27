@@ -16,7 +16,29 @@
 				</tr>
 			</thead>
 			<tbody>
+				<?php
 
+				require('connection.php');
+				$query = mysqli_query($connection, "Select * From history_lelang"); // Tambahin Where id_lelang dan sort dari penawaran tertinggi
+				while ($data = mysqli_fetch_array($query))
+				{
+					$id_barang = $data['id_barang'];
+					$id_user = $data['id_user'];
+
+					$queryBarang = mysqli_query($connection, "Select * From tb_barang Where id_barang='$id_barang'");
+					$queryUser = mysqli_query($connection, "Select * From tb_masyarakat Where id_user='$id_user'");
+
+					$data_barang = mysqli_fetch_assoc($queryBarang);
+					$data_user = mysqli_fetch_assoc($queryUser);
+
+					echo "<tr>";
+					echo "<td>" . $data_barang['nama_barang'] . "</td>";
+					echo "<td>" . $data_user['nama_lengkap'] . "</td>";
+					echo "<td>" . $data['penawaran_harga'] . "</td>";
+					echo "</tr>";
+				}
+
+				?>
 			</tbody>
 		</table>
 	</div>
@@ -57,8 +79,8 @@
 	</div>
 </div>
 
-<!--<p style="display: none;" id="id_lelang"></p>
-<p style="display: none;" id="nama_user_penawaran"></p>-->
+<p style="display: none;" id="p_id_lelang"></p>
+<!--<p style="display: none;" id="nama_user_penawaran"></p>-->
 
 <script>
 function aturBarang (nama_barang, deskripsi_barang, id_lelang, nama_user, id_barang, harga_minimal, harga_awal)
@@ -66,6 +88,7 @@ function aturBarang (nama_barang, deskripsi_barang, id_lelang, nama_user, id_bar
 	document.getElementById('nama_barang').innerHTML = nama_barang.toString();
 	document.getElementById('deskripsi_barang').innerHTML = deskripsi_barang.toString();
 	document.getElementById('id_lelang').value = id_lelang;
+	document.getElementById('p_id_lelang').innerHTML = id_lelang;
 	document.getElementById('nama_user_penawaran').value = nama_user;
 	document.getElementById('harga_awal').innerHTML = "Harga Awal: " + formatRupiah(harga_awal.toString(), 'Rp.');
 
