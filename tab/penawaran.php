@@ -4,6 +4,21 @@
 		<hr>
 		<p class="text-muted" id="harga_awal"></p>
 		<p class="lead" id="deskripsi_barang"></p>
+
+		<?php
+
+		if (isset($_SESSION['level']))
+		{
+			if ($_SESSION['level'] == "admin" || $_SESSION['level'] == "petugas")
+			{
+				echo '<div class="alert alert-danger">';
+				echo 'Admin atau Petugas tidak bisa menawar barang!';
+				echo '</div>';
+			}
+		}
+
+		?>
+
 		<button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#tawarModal">Tawar</button>
 	</div>
 	<div class="col">
@@ -19,7 +34,7 @@
 				<?php
 
 				require('connection.php');
-				$query = mysqli_query($connection, "Select * From history_lelang"); // Tambahin Where id_lelang dan sort dari penawaran tertinggi
+				$query = mysqli_query($connection, "Select * From history_lelang Where id_lelang='$id_lelang'"); // Tambahin Where id_lelang dan sort dari penawaran tertinggi
 				while ($data = mysqli_fetch_array($query))
 				{
 					$id_barang = $data['id_barang'];
@@ -99,7 +114,8 @@ function aturBarang (nama_barang, deskripsi_barang, id_lelang, nama_user, id_bar
 
 // Dicolong dari malasngoding
 /* Fungsi formatRupiah */
-function formatRupiah(angka, prefix){
+function formatRupiah(angka, prefix)
+{
 	var number_string = angka.replace(/[^,\d]/g, '').toString(),
 	split   		= number_string.split(','),
 	sisa     		= split[0].length % 3,
