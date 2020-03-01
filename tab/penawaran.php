@@ -23,37 +23,15 @@
 	</div>
 	<div class="col">
 		<table class="table table-striped table-bordered table-hover" id="tb_pelelangan">
-			<thead class="thead-dark">
+			<thead class="thead-dark"> <!-- Kalo bisa ubah jadi keliatan kayak list -->
 				<tr>
-					<th>Nama Barang</th>
+					<!--<th>Nama Barang</th>-->
 					<th>Nama User</th>
 					<th>Penawaran Harga</th>
 				</tr>
 			</thead>
-			<tbody>
-				<?php
-
-				require('connection.php');
-				$query = mysqli_query($connection, "Select * From history_lelang Where id_lelang='$id_lelang'"); // Tambahin Where id_lelang dan sort dari penawaran tertinggi
-				while ($data = mysqli_fetch_array($query))
-				{
-					$id_barang = $data['id_barang'];
-					$id_user = $data['id_user'];
-
-					$queryBarang = mysqli_query($connection, "Select * From tb_barang Where id_barang='$id_barang'");
-					$queryUser = mysqli_query($connection, "Select * From tb_masyarakat Where id_user='$id_user'");
-
-					$data_barang = mysqli_fetch_assoc($queryBarang);
-					$data_user = mysqli_fetch_assoc($queryUser);
-
-					echo "<tr>";
-					echo "<td>" . $data_barang['nama_barang'] . "</td>";
-					echo "<td>" . $data_user['nama_lengkap'] . "</td>";
-					echo "<td>" . $data['penawaran_harga'] . "</td>";
-					echo "</tr>";
-				}
-
-				?>
+			<tbody id="tbody_history-lelang">
+				
 			</tbody>
 		</table>
 	</div>
@@ -94,7 +72,7 @@
 	</div>
 </div>
 
-<p style="display: none;" id="p_id_lelang"></p>
+<!--<p style="display: none;" id="p_id_lelang"></p>-->
 <!--<p style="display: none;" id="nama_user_penawaran"></p>-->
 
 <script>
@@ -103,7 +81,7 @@ function aturBarang (nama_barang, deskripsi_barang, id_lelang, nama_user, id_bar
 	document.getElementById('nama_barang').innerHTML = nama_barang.toString();
 	document.getElementById('deskripsi_barang').innerHTML = deskripsi_barang.toString();
 	document.getElementById('id_lelang').value = id_lelang;
-	document.getElementById('p_id_lelang').innerHTML = id_lelang;
+	//document.getElementById('p_id_lelang').innerHTML = id_lelang;
 	document.getElementById('nama_user_penawaran').value = nama_user;
 	document.getElementById('harga_awal').innerHTML = "Harga Awal: " + formatRupiah(harga_awal.toString(), 'Rp.');
 
@@ -111,6 +89,16 @@ function aturBarang (nama_barang, deskripsi_barang, id_lelang, nama_user, id_bar
 	document.getElementById('tawar-id_barang').value = id_barang;
 	document.getElementById('tawar-harga').min = harga_minimal + 1;
 }
+
+$(document).ready(function() 
+{
+	$("button[name='tawarBtn']").click(function()
+	{
+		$("#tbody_history-lelang").load("history_lelang.php", {
+			post_id_lelang: id_lelang
+		})
+	})
+})
 
 // Dicolong dari malasngoding
 /* Fungsi formatRupiah */

@@ -55,7 +55,7 @@
 			$arguments = "'" . $nama_barang . "', '" . $deskripsi_barang . "'";
 			$minimal_tawaran = $data['harga_akhir'];
 			$harga_awal = $data_barang['harga_awal'];
-			echo '<button class="btn btn-primary btn-block" onclick="tawar(' . $id_lelang . ', ' . $arguments . ', ' . $id_barang . ', ' . $minimal_tawaran . ', ' . $harga_awal . ')">Ajukan tawaran</button>';
+			echo '<button class="btn btn-primary btn-block" name="tawarBtn" onclick="tawar(' . $id_lelang . ', ' . $arguments . ', ' . $id_barang . ', ' . $minimal_tawaran . ', ' . $harga_awal . ')">Ajukan tawaran</button>';
 
 			echo '</div>';
 			echo '</div>';
@@ -84,7 +84,8 @@ function tawar(id, nama_barang, deskripsi_barang, id_barang, harga_minimal, harg
 		return;
 	}
 
-	$('#mainNav li:last-child a').tab('show');
+	id_lelang = id;
 	aturBarang(nama_barang, deskripsi_barang, id, user, id_barang, harga_minimal, harga_awal);
+	$('#mainNav li:last-child a').tab('show');
 }
 </script>

@@ -15,8 +15,11 @@ session_start();
 </head>
 <body>
 
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
+<script>
+	var id_lelang = null;
+</script>
 
 <!-- NavBar -->
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-1">
