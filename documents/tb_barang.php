@@ -1,6 +1,3 @@
-<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-<link rel="stylesheet" type="text/css" href="css/style.css">
-
 <div id="laporan-barang">
 	<table class="table table-striped table-bordered table-hover" id="laporan-barang">
 		<thead class="thead-dark">
