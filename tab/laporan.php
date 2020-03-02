@@ -14,10 +14,18 @@
 	
 	<hr>
 
-	<a href="#" class="btn btn-primary btn-block">Generate Laporan</a>
+	<button class="btn btn-primary btn-block" onclick="printDocument()">Generate Laporan</button>
+</div>
+
+<div style="display: none;">
+	<?php
+		include 'documents/tb_barang.php';
+	?>
 </div>
 
 <script>
+var selectedTable = null;
+
 function selectTable(table_id)
 {
 	var pilihan = document.getElementById('laporan-pilihan').childNodes;
@@ -30,5 +38,23 @@ function selectTable(table_id)
 	}
 	
 	$('button[name = ' + table_id + ']').addClass("active")
+
+	selectedTable = table_id;
+}
+
+function printDocument()
+{
+	if (selectedTable === null)
+	{
+		alert("Harus memilih table yang ingin diprint");
+		return;
+	}
+
+	var printContents = document.getElementById(selectedTable).innerHTML;
+	var originalContents = document.body.innerHTML;
+
+	document.body.innerHTML = printContents;
+	window.print();
+	document.body.innerHTML = originalContents;
 }
 </script>
