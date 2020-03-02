@@ -1,5 +1,5 @@
 <div id="laporan-barang">
-	<table class="table table-striped table-bordered table-hover" id="laporan-barang">
+	<table class="table table-striped table-bordered table-hover">
 		<thead class="thead-dark">
 			<tr>
 				<th>ID</th>

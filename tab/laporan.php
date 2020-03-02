@@ -9,7 +9,7 @@
 		<button name="laporan-user" type="button" class="list-group-item list-group-item-action" onclick="selectTable('laporan-user')">Masyarakat</button>
 		<button name="laporan-petugas" type="button" class="list-group-item list-group-item-action" onclick="selectTable('laporan-petugas')">Petugas</button>
 		<button name="laporan-histori" type="button" class="list-group-item list-group-item-action" onclick="selectTable('laporan-histori')">Histori Lelang</button>
-		<button name="laporan-level" type="button" class="list-group-item list-group-item-action" onclick="selectTable('laporan-level')">Level</button>
+		<!--<button name="laporan-level" type="button" class="list-group-item list-group-item-action" onclick="selectTable('laporan-level')">Level</button>-->
 	</div>
 	
 	<hr>
@@ -20,6 +20,10 @@
 <div style="display: none;">
 	<?php
 		include 'documents/tb_barang.php';
+		include 'documents/tb_lelang.php';
+		include 'documents/tb_masyarakat.php';
+		include 'documents/tb_petugas.php';
+		include 'documents/history_lelang.php';
 	?>
 </div>
 
