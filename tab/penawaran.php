@@ -1,6 +1,7 @@
 <div class="row">
 	<div class="col jumbotron">
 		<h1 class="display-4" id="nama_barang"></h1>
+		<small class="text-mute" id="tgl_akhir"></small>
 		<hr>
 		<p class="text-muted" id="harga_awal"></p>
 		<p class="lead" id="deskripsi_barang"></p>
@@ -76,9 +77,10 @@
 <!--<p style="display: none;" id="nama_user_penawaran"></p>-->
 
 <script>
-function aturBarang (nama_barang, deskripsi_barang, id_lelang, nama_user, id_barang, harga_minimal, harga_awal)
+function aturBarang (nama_barang, deskripsi_barang, tgl_lelang, id_lelang, nama_user, id_barang, harga_minimal, harga_awal)
 {
 	document.getElementById('nama_barang').innerHTML = nama_barang.toString();
+	document.getElementById('tgl_akhir').innerHTML = tgl_lelang.toString();
 	document.getElementById('deskripsi_barang').innerHTML = deskripsi_barang.toString();
 	document.getElementById('id_lelang').value = id_lelang;
 	//document.getElementById('p_id_lelang').innerHTML = id_lelang;

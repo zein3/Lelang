@@ -19,6 +19,7 @@
 	<div class="row">
 		<?php
 		require('connection.php');
+		include 'utilities/tgl_indo.php';
 		$query = mysqli_query($connection, "Select * From tb_lelang Where status='dibuka'");
 
 		while ($data = mysqli_fetch_array($query))
@@ -46,19 +47,26 @@
 				echo '<h6 class="card-subtitle mb-2 text-muted">Penawaran tertinggi: ' . $harga_akhir_rupiah . '</h6>';
 			}
 
-			echo '<p class="card-text">' . $data_barang['deskripsi_barang'] . '</p>';
+			$tgl_akhir_lelang = tgl_indo($data['tgl_lelang']);
+			echo '<h6 class="card-subtitle mb-2 text-muted">Tanggal akhir lelang: ' . $tgl_akhir_lelang . '</h6>';
+			//echo '<p class="card-text">' . $data_barang['deskripsi_barang'] . '</p>';
 
 			// Mengumpulkan data yang diperlukan untuk membuat button
 			$id_lelang = $data['id_lelang'];
 			$nama_barang = $data_barang['nama_barang'];
 			$deskripsi_barang = $data_barang['deskripsi_barang'];
-			$arguments = "'" . $nama_barang . "', '" . $deskripsi_barang . "'";
+			$arguments = "'" . $nama_barang . "', '" . $deskripsi_barang . "', '" . $tgl_akhir_lelang . "'";
 			$minimal_tawaran = $data['harga_akhir'];
 			$harga_awal = $data_barang['harga_awal'];
 			echo '<button class="btn btn-primary btn-block" name="tawarBtn" onclick="tawar(' . $id_lelang . ', ' . $arguments . ', ' . $id_barang . ', ' . $minimal_tawaran . ', ' . $harga_awal . ')">Ajukan tawaran</button>';
 
 			echo '</div>';
 			echo '</div>';
+		}
+
+		if (mysqli_num_rows($query) <= 0)
+		{
+			echo '<h5>Maaf saat ini sedang tidak ada barang yang dilelang</h5>';
 		}
 
 		?>
@@ -73,7 +81,7 @@
 	?></p>
 
 <script>
-function tawar(id, nama_barang, deskripsi_barang, id_barang, harga_minimal, harga_awal)
+function tawar(id, nama_barang, deskripsi_barang, tgl_lelang, id_barang, harga_minimal, harga_awal)
 {
 	var user = document.getElementById('nama_user').innerHTML;
 
@@ -85,7 +93,7 @@ function tawar(id, nama_barang, deskripsi_barang, id_barang, harga_minimal, harg
 	}
 
 	id_lelang = id;
-	aturBarang(nama_barang, deskripsi_barang, id, user, id_barang, harga_minimal, harga_awal);
+	aturBarang(nama_barang, deskripsi_barang, tgl_lelang, id, user, id_barang, harga_minimal, harga_awal);
 	$('#mainNav li:last-child a').tab('show');
 }
 </script>
