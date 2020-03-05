@@ -52,6 +52,7 @@ session_start();
 				}
 			}
 			?>
+			<li class="nav-item" style="display: none;"><a class="nav-link" id="daftarpetugas-tab" data-toggle="tab" href="#daftarpetugas"></a></li>
 
 			<li class="nav-item" style="display: none;"><a class="nav-link" id="tawar-tab" data-toggle="tab" href="#penawaran"></a></li>
 		</ul>
@@ -154,7 +155,9 @@ session_start();
 				</div>
 				<div class="modal-footer">
 					<button type="submit" name="register-btn" class="btn btn-blue btn-lg btn-block">Register</button>
+					
 				</div>
+				<small class="text-mute d-flex justify-content-center" onclick="pendaftaranPetugas()"><a href="#">Daftar sebagai petugas</a></small>
 			</form>
 		</div>
 	</div>
@@ -202,7 +205,13 @@ session_start();
 	</footer>
 </div>
 
-
+<script>
+	function pendaftaranPetugas ()
+	{
+		$("#daftarpetugas-tab").tab('show');
+		$("#regisModal").modal('hide');
+	}
+</script>
 
 <?php
 

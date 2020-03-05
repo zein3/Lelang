@@ -21,7 +21,15 @@ if ($password1 != $password2)
 //Mengecek apakah nama lengkap atau username sudah dipakai user lain
 $checkQuery = "Select * From tb_masyarakat Where nama_lengkap='$nama_lengkap' Or username='$username'";
 $check = mysqli_query($connection, $checkQuery);
+if (mysqli_num_rows($check) > 0)
+{
+	header('Location: index.php?err=nameexist');
+	return;
+}
 
+//Mengecek apakah nama lengkap atau username sudah dipakai petugas
+$checkQuery = "Select * From tb_petugas Where nama_petugas='$nama_lengkap' Or username='$username'";
+$check = mysqli_query($connection, $checkQuery);
 if (mysqli_num_rows($check) > 0)
 {
 	header('Location: index.php?err=nameexist');
