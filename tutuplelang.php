@@ -19,7 +19,11 @@ if (mysqli_num_rows($query) > 0)
 	echo $query;
 	if (mysqli_query($connection, $query))
 	{
-		header('Location: index.php');
+		$query = "Delete From history_lelang Where id_barang='$id'";
+		if (mysqli_query($connection, $query))
+		{
+			header('Location: index.php');
+		}
 	}
 }
 

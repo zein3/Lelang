@@ -19,6 +19,7 @@
 	while ($data = mysqli_fetch_array($query))
 	{
 		$id = $data['id_barang'];
+		$nama_barang = "'" . $data['nama_barang'] . "'";
 		$queryCekLelang = mysqli_query($connection, "Select * From tb_lelang Where id_barang='$id'");
 
 		$dilelang = false;
@@ -49,7 +50,7 @@
 		}
 		else
 		{
-			echo '<a class="btn btn-primary btn-block" href="bukalelang.php?id=' . $id . '">Buka Lelang</a>';
+			echo '<button class="btn btn-primary btn-block" onclick="bukaLelang(' . $id . ', ' . $nama_barang . ')">Buka Lelang</button>';
 		}
 
 		echo '</div>';
@@ -58,3 +59,44 @@
 
 	?>
 </div>
+
+<div class="modal fade" id="bukaLelangModal" tabindex="-1" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header bg-primary">
+				<h5 class="modal-title text-white">Buka Lelang</h5>
+				<button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<form action="bukalelang.php" method="post">
+				<div class="modal-body">
+					<div class="form-group">
+						<label for="buka-id">ID Barang</label>
+						<input type="text" class="form-control-plaintext" id="buka-id" name="buka-id" readonly>
+					</div>
+					<div class="form-group">
+						<label for="buka-nama_barang">Nama Barang</label>
+						<input type="text" class="form-control-plaintext" id="buka-nama_barang" name="buka-nama_barang" readonly>
+					</div>
+					<div class="form-group">
+						<label for="buka-tanggal">Tanggal Akhir Lelang</label>
+						<input type="date" class="form-control" name="buka-tanggal" id="buka-tanggal" required>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="submit" class="btn btn-primary btn-block btn-lg">Buka Lelang</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+<script>
+function bukaLelang(id, nama_barang)
+{
+	$("#buka-id").val(id);
+	$("#buka-nama_barang").val(nama_barang);
+	$("#bukaLelangModal").modal('show');
+}
+</script>

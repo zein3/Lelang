@@ -25,6 +25,10 @@
 						{
 							echo 'Admin atau Petugas tidak bisa mengajukan penawaran';
 						}
+						else if ($error == 'tgl')
+						{
+							echo 'Tanggal tutup lelang harus di masa depan!';
+						}
 						else if ($error == 'error')
 						{
 							echo 'Maaf, ada kesalahan pada sistem';
