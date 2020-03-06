@@ -186,6 +186,9 @@ session_start();
 			include 'tab/pengaturan_lelang.php';
 			?>
 		</div>
+		<div class="tab-pane fade" id="pengumuman-pemenang">
+			
+		</div>
 		<div class="tab-pane fade" id="daftarpetugas">
 			<?php
 			include 'tab/daftarpetugas.php';
@@ -211,6 +214,10 @@ session_start();
 		$("#daftarpetugas-tab").tab('show');
 		$("#regisModal").modal('hide');
 	}
+
+	$(document).ready(function () {
+		$("#pengumuman-pemenang").load("cekpemenang.php");
+	})
 </script>
 
 <?php
