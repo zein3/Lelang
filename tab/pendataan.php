@@ -24,9 +24,9 @@
 			</div>
 
 			<div class="btn-group btn-block">
-				<button id="tb_barang_add" class="btn btn-success">Tambah</button>
-				<button id="tb_barang_edit" class="btn btn-primary">Ubah</button>
-				<button id="tb_barang_delete" class="btn btn-danger">Hapus</button>
+				<button id="add" name="tb-barang-btn" class="btn btn-success">Tambah</button>
+				<button id="edit" name="tb-barang-btn" class="btn btn-primary">Ubah</button>
+				<button id="delete" name="tb-barang-btn" class="btn btn-danger">Hapus</button>
 			</div>
 		<!--</form>-->
 	</div>
@@ -49,11 +49,11 @@
 </div>
 
 <script>
-var id = null;
-var nama = null;
-var tgl = null;
-var harga = null;
-var deskripsi = null;
+var id = '';
+var nama = '';
+var tgl = '';
+var harga = '';
+var deskripsi = '';
 
 function loadTbBarang ()
 {
@@ -68,38 +68,41 @@ function loadTbBarang ()
 $(document).ready(function () {
 	loadTbBarang();
 
-	// Tambah Barang
-	$("#tb_barang_add").click(function() {
+	$("button[name='tb-barang-btn']").click(function() {
 		prepareInputValue();
-		$.ajax({
-			url: 'tb_barang.php',
-			type: 'POST',
-			data: {'option' : 'add', 'tb-barang_id' : id, 'tb-barang_nama' : nama, 'tb-barang_tgl' : tgl, 'tb-barang_harga' : harga, 'tb-barang_deskripsi' : deskripsi}
-		}).done(function () {
-			loadTbBarang();		
-		})
-	})
+		var option = this.id.toString();
 
-	// Edit Barang
-	$("#tb_barang_edit").click(function() {
-		prepareInputValue();
-		$.ajax({
-			url: 'tb_barang.php',
-			type: 'POST',
-			data: {'option' : 'edit', 'tb-barang_id' : id, 'tb-barang_nama' : nama, 'tb-barang_tgl' : tgl, 'tb-barang_harga' : harga, 'tb-barang_deskripsi' : deskripsi}
-		}).done(function () {
-			loadTbBarang();
-		})
-	})
+		// Cek input
+		if (option == 'add')
+		{
+			if (nama == '' || tgl == '' || harga == '' || deskripsi == '')
+			{
+				alert('Semua harus diisi!');
+				return;
+			}
+		}
+		else if (option == 'delete')
+		{
+			if (id == '')
+			{
+				alert('Semua harus diisi!');
+				return;
+			}
+		}
+		else
+		{
+			if (id == '' || nama == '' || tgl == '' || harga == '' || deskripsi == '')
+			{
+				alert('Semua harus diisi!');
+				return;
+			}
+		}
 
-	// Hapus Barang
-	$("#tb_barang_delete").click(function() {
-		prepareInputValue();
 		$.ajax({
 			url: 'tb_barang.php',
 			type: 'POST',
-			data: {'option' : 'delete', 'tb-barang_id' : id, 'tb-barang_nama' : nama, 'tb-barang_tgl' : tgl, 'tb-barang_harga' : harga, 'tb-barang_deskripsi' : deskripsi}
-		}).done(function () {
+			data: {'option' : option, 'tb-barang_id' : id, 'tb-barang_nama' : nama, 'tb-barang_tgl' : tgl, 'tb-barang_harga' : harga, 'tb-barang_deskripsi' : deskripsi}
+		}).done(function() {
 			loadTbBarang();
 		})
 	})
