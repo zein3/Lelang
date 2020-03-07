@@ -69,3 +69,12 @@ body { padding-top: 75px; }
 .btn-blue:focus, .btn-blue.focus {
   box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.5);
 }
+
+.loading-spinner {
+  width: 5rem;
+  height: 5rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -50px 0px 0px -50px;
+}

@@ -1,7 +1,10 @@
 <div class="modal fade" id="error-modal" tabindex="-1">
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
-			<div class="modal-header bg-danger">
+			<div class="modal-body bg-danger">
+				<button type="button" class="close text-white" data-dismiss="modal" aria-label="close">
+					<span aria-hidden="true">&times;</span>
+				</button>
 				<h3 class="modal-title text-white d-flex justify-content-center">
 					<?php
 						$error = $_GET['err'];
@@ -35,9 +38,6 @@
 						}
 					?>
 				</h3>
-				<button type="button" class="close text-white" data-dismiss="modal" aria-label="close">
-					<span aria-hidden="true">&times;</span>
-				</button>
 			</div>
 		</div>
 	</div>
