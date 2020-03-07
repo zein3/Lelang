@@ -2,7 +2,12 @@
 
 require('connection.php');
 
-if (isset($_POST['add']))
+if (!isset($_POST['option']))
+{
+	return;
+}
+
+if ($_POST['option'] == 'add')
 {
 	// Mengambil data yang diperlukan dari form
 	$nama = mysqli_real_escape_string($connection, $_POST['tb-barang_nama']);
@@ -20,7 +25,7 @@ if (isset($_POST['add']))
 		header('Location: index.php?success=datamasuk');
 	}
 }
-else if (isset($_POST['edit']))
+else if ($_POST['option'] == 'edit')
 {
 	$id = mysqli_real_escape_string($connection, $_POST['tb-barang_id']);
 	$nama = mysqli_real_escape_string($connection, $_POST['tb-barang_nama']);
@@ -44,7 +49,7 @@ else if (isset($_POST['edit']))
 		header('Location: index.php?success=dataubah');
 	}
 }
-else if (isset($_POST['delete']))
+else if ($_POST['option'] == 'delete')
 {
 	$id = mysqli_real_escape_string($connection, $_POST['tb-barang_id']);
 

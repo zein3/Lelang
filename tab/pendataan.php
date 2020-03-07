@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="col jumbotron">
-		<form action="tb_barang.php" method="post">
+		<!--<form>-->
 			<div class="form-group">
 				<label for="tb-barang_id">ID Barang</label>
 				<input type="text" class="form-control-plaintext" name="tb-barang_id" id="tb-barang_id" readonly>
@@ -24,11 +24,11 @@
 			</div>
 
 			<div class="btn-group btn-block">
-				<button name="add" class="btn btn-success">Tambah</button>
-				<button name="edit" class="btn btn-primary">Ubah</button>
-				<button name="delete" class="btn btn-danger">Hapus</button>
+				<button id="tb_barang_add" class="btn btn-success">Tambah</button>
+				<button id="tb_barang_edit" class="btn btn-primary">Ubah</button>
+				<button id="tb_barang_delete" class="btn btn-danger">Hapus</button>
 			</div>
-		</form>
+		<!--</form>-->
 	</div>
 	<div class="col">
 		<table class="table table-striped table-bordered table-hover" id="tb_barang">
@@ -41,40 +41,93 @@
 					<th>Deskripsi Barang</th>
 				</tr>
 			</thead>
-			<tbody>
-				<?php
-
-				require('connection.php');
-				$query = mysqli_query($connection, "Select * From tb_barang");
-				while ($data = mysqli_fetch_array($query))
-				{
-					echo "<tr>";
-					echo "<td>" . $data['id_barang'] . "</td>";
-					echo "<td>" . $data['nama_barang'] . "</td>";
-					echo "<td>" . $data['tgl'] . "</td>";
-					echo "<td>" . $data['harga_awal'] . "</td>";
-					echo "<td>" . $data['deskripsi_barang'] . "</td>";
-					echo "</tr>";
-				}
-
-				?>
+			<tbody id="tbody_tb_barang">
+				
 			</tbody>
 		</table>
 	</div>
 </div>
 
 <script>
-var tb_barang = document.getElementById('tb_barang');
+var id = null;
+var nama = null;
+var tgl = null;
+var harga = null;
+var deskripsi = null;
 
-for (var i = 1; i < tb_barang.rows.length; i++)
+function loadTbBarang ()
 {
-	tb_barang.rows[i].onclick = function() 
+	$.ajax({
+		url: 'utilities/barang.php'
+	}).done(function (data) {
+		$("#tbody_tb_barang").html(data);
+		addTableInteraction();
+	})
+}
+
+$(document).ready(function () {
+	loadTbBarang();
+
+	// Tambah Barang
+	$("#tb_barang_add").click(function() {
+		prepareInputValue();
+		$.ajax({
+			url: 'tb_barang.php',
+			type: 'POST',
+			data: {'option' : 'add', 'tb-barang_id' : id, 'tb-barang_nama' : nama, 'tb-barang_tgl' : tgl, 'tb-barang_harga' : harga, 'tb-barang_deskripsi' : deskripsi}
+		}).done(function () {
+			loadTbBarang();		
+		})
+	})
+
+	// Edit Barang
+	$("#tb_barang_edit").click(function() {
+		prepareInputValue();
+		$.ajax({
+			url: 'tb_barang.php',
+			type: 'POST',
+			data: {'option' : 'edit', 'tb-barang_id' : id, 'tb-barang_nama' : nama, 'tb-barang_tgl' : tgl, 'tb-barang_harga' : harga, 'tb-barang_deskripsi' : deskripsi}
+		}).done(function () {
+			loadTbBarang();
+		})
+	})
+
+	// Hapus Barang
+	$("#tb_barang_delete").click(function() {
+		prepareInputValue();
+		$.ajax({
+			url: 'tb_barang.php',
+			type: 'POST',
+			data: {'option' : 'delete', 'tb-barang_id' : id, 'tb-barang_nama' : nama, 'tb-barang_tgl' : tgl, 'tb-barang_harga' : harga, 'tb-barang_deskripsi' : deskripsi}
+		}).done(function () {
+			loadTbBarang();
+		})
+	})
+})
+
+function prepareInputValue ()
+{
+	id = $("#tb-barang_id").val();
+	nama = $("#tb-barang_nama").val();
+	tgl = $("#tb-barang_tgl").val();
+	harga = $("#tb-barang_harga").val();
+	deskripsi = $("#tb-barang_deskripsi").val();
+}
+
+function addTableInteraction ()
+{
+	var tb_barang = document.getElementById('tbody_tb_barang');
+
+	for (var i = 0; i < tb_barang.rows.length; i++)
 	{
-		document.getElementById('tb-barang_id').value = this.cells[0].innerHTML;
-		document.getElementById('tb-barang_nama').value = this.cells[1].innerHTML;
-		document.getElementById('tb-barang_tgl').value = this.cells[2].innerHTML;
-		document.getElementById('tb-barang_harga').value = this.cells[3].innerHTML;
-		document.getElementById('tb-barang_deskripsi').value = this.cells[4].innerHTML;
+		tb_barang.rows[i].onclick = function()
+		{
+			document.getElementById('tb-barang_id').value = this.cells[0].innerHTML;
+			document.getElementById('tb-barang_nama').value = this.cells[1].innerHTML;
+			document.getElementById('tb-barang_tgl').value = this.cells[2].innerHTML;
+			document.getElementById('tb-barang_harga').value = this.cells[3].innerHTML;
+			document.getElementById('tb-barang_deskripsi').value = this.cells[4].innerHTML;
+		}
 	}
 }
 </script>
