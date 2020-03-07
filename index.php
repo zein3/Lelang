@@ -217,6 +217,10 @@ session_start();
 
 	$(document).ready(function () {
 		$("#pengumuman-pemenang").load("cekpemenang.php");
+
+		$.ajax({
+			url: 'utilities/ceklelang.php'
+		})
 	})
 </script>
 
