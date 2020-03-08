@@ -3,7 +3,7 @@
 require(dirname(dirname(__FILE__)) . DIRECTORY_SEPARATOR . 'connection.php');
 
 $queryLelang = "Select * From tb_lelang Where status='dibuka'";
-while (mysqli_fetch_array(mysqli_query($connection, $queryLelang)))
+while ($data = mysqli_fetch_array(mysqli_query($connection, $queryLelang)))
 {
 	$current_date = date('Y-m-d');
 	$date = date('Y-m-d', strtotime($data['tgl_lelang']));
