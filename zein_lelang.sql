@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 13, 2020 at 01:22 PM
+-- Generation Time: Mar 10, 2020 at 02:22 AM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 5.6.31
 
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `zein_lelang`
+-- Database: `zein_lelang2`
 --
 
 -- --------------------------------------------------------
@@ -61,7 +61,7 @@ CREATE TABLE `tb_lelang` (
   `id_barang` int(11) NOT NULL,
   `tgl_lelang` date NOT NULL,
   `harga_akhir` int(20) NOT NULL,
-  `id_user` int(11) NOT NULL,
+  `id_user` int(11) DEFAULT NULL,
   `id_petugas` int(11) NOT NULL,
   `status` enum('dibuka','ditutup') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
