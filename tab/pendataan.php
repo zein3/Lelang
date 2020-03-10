@@ -128,6 +128,7 @@ $(document).ready(function () {
 			loadTbBarang();
 			$("#loading-spinner").css('display', 'none');
 			$("#tb-barangModal").modal('show');
+			clearForm();
 		})
 	})
 })
@@ -156,5 +157,14 @@ function addTableInteraction ()
 			document.getElementById('tb-barang_deskripsi').value = this.cells[4].innerHTML;
 		}
 	}
+}
+
+function clearForm ()
+{
+	document.getElementById('tb-barang_id').value = '';
+	document.getElementById('tb-barang_nama').value = '';
+	document.getElementById('tb-barang_tgl').value = '';
+	document.getElementById('tb-barang_harga').value = '';
+	document.getElementById('tb-barang_deskripsi').value = '';
 }
 </script>
