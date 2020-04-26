@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 10, 2020 at 02:22 AM
+-- Generation Time: Apr 26, 2020 at 08:07 AM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 5.6.31
 
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `zein_lelang2`
+-- Database: `zein_lelang`
 --
 
 -- --------------------------------------------------------
@@ -50,6 +50,16 @@ CREATE TABLE `tb_barang` (
   `deskripsi_barang` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `tb_barang`
+--
+
+INSERT INTO `tb_barang` (`id_barang`, `nama_barang`, `tgl`, `harga_awal`, `deskripsi_barang`) VALUES
+(1, 'Laptop Lenovo', '2020-04-26', 4000000, 'OS: Windows 10 64-bit CPU: AMD A8-7410 GPU: AMD R5 M430 Memory: 4GB RAM'),
+(2, 'Macbook Pro', '2020-04-24', 36929000, '16\" inch Core i7 16GB 512GB MVVJ2 Gray MVVL2 Silver - MVVJ2 Gray, Resmi IBOX'),
+(3, 'LAPTOP LENOVO IDEAPAD S34', '2020-04-05', 6799000, 'AMD RYZEN 3-3200U 8GB 512GB VEGA 3'),
+(4, 'LAPTOP HP 14S-DK0073AU', '2020-04-19', 3649000, 'AMD A4 9125 DDR4 4GB R3 HDD 1TB 14\" WIN10');
+
 -- --------------------------------------------------------
 
 --
@@ -65,6 +75,13 @@ CREATE TABLE `tb_lelang` (
   `id_petugas` int(11) NOT NULL,
   `status` enum('dibuka','ditutup') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tb_lelang`
+--
+
+INSERT INTO `tb_lelang` (`id_lelang`, `id_barang`, `tgl_lelang`, `harga_akhir`, `id_user`, `id_petugas`, `status`) VALUES
+(1, 1, '2020-04-27', 5500000, 1, 2, 'ditutup');
 
 -- --------------------------------------------------------
 
@@ -104,7 +121,10 @@ CREATE TABLE `tb_masyarakat` (
 --
 
 INSERT INTO `tb_masyarakat` (`id_user`, `nama_lengkap`, `username`, `password`, `telp`) VALUES
-(1, 'User', 'user', 'user', '081234567890');
+(1, 'User', 'user', 'user', '081234567890'),
+(2, 'Ade Budiawan', 'WibuJoJo', 'pipinpadaloxicopolis', '089658949682'),
+(3, 'asdasfda', 'asdasd', 'asdasdasd', '123123'),
+(4, 'test', 'test', 'testingg', '12345678');
 
 -- --------------------------------------------------------
 
@@ -126,7 +146,8 @@ CREATE TABLE `tb_petugas` (
 
 INSERT INTO `tb_petugas` (`id_petugas`, `nama_petugas`, `username`, `password`, `id_level`) VALUES
 (1, 'Admin', 'admin', 'admin', 1),
-(2, 'Petugas', 'petugas', 'petugas', 2);
+(2, 'Petugas', 'petugas', 'petugas', 2),
+(3, 'budi', 'budi', 'budibudi', 2);
 
 --
 -- Indexes for dumped tables
@@ -188,12 +209,12 @@ ALTER TABLE `history_lelang`
 -- AUTO_INCREMENT for table `tb_barang`
 --
 ALTER TABLE `tb_barang`
-  MODIFY `id_barang` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `tb_lelang`
 --
 ALTER TABLE `tb_lelang`
-  MODIFY `id_lelang` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_lelang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `tb_level`
 --
@@ -203,12 +224,12 @@ ALTER TABLE `tb_level`
 -- AUTO_INCREMENT for table `tb_masyarakat`
 --
 ALTER TABLE `tb_masyarakat`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `tb_petugas`
 --
 ALTER TABLE `tb_petugas`
-  MODIFY `id_petugas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_petugas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- Constraints for dumped tables
 --
