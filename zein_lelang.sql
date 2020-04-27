@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 26, 2020 at 08:07 AM
+-- Generation Time: Apr 27, 2020 at 05:01 AM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 5.6.31
 
@@ -21,6 +21,17 @@ SET time_zone = "+00:00";
 --
 -- Database: `zein_lelang`
 --
+
+DELIMITER $$
+--
+-- Procedures
+--
+CREATE DEFINER=`root`@`localhost` PROCEDURE `DataBarang` ()  BEGIN
+	Select *
+    From tb_barang;
+    End$$
+
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -209,7 +220,7 @@ ALTER TABLE `history_lelang`
 -- AUTO_INCREMENT for table `tb_barang`
 --
 ALTER TABLE `tb_barang`
-  MODIFY `id_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `tb_lelang`
 --

@@ -1,7 +1,7 @@
 <?php
 
 require(dirname(dirname(__FILE__)) . DIRECTORY_SEPARATOR . 'connection.php');
-$query = mysqli_query($connection, "Select * From tb_barang");
+$query = mysqli_query($connection, "Call DataBarang()");
 while ($data = mysqli_fetch_array($query))
 {
 	echo "<tr>";
