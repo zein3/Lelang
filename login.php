@@ -9,9 +9,7 @@ $username = mysqli_real_escape_string($connection, $_POST['login-username']);
 $password = mysqli_real_escape_string($connection, $_POST['login-password']);
 
 // Query untuk Login
-$query = mysqli_query($connection, "Select * From tb_masyarakat Where username='$username' And password='$password'
-									Union
-									Select * From tb_petugas Where username='$username' And password='$password'");
+$query = mysqli_query($connection, "Call LoginQuery('$username', '$password')");
 
 if (mysqli_num_rows($query) > 0)
 {
@@ -23,17 +21,12 @@ if (mysqli_num_rows($query) > 0)
 	echo '</pre>';*/
 	
 	// Mengatur variable sesi nama jadi nama lengkap pengguna
-	$_SESSION['name'] = $data['nama_lengkap'];
-
-	// Mengambil data id level
-	$namaPetugas = $data['username'];
-	$petugasQuery = mysqli_query($connection, "Select id_level From tb_petugas Where username='$namaPetugas'");
-	$dataPetugas = mysqli_fetch_assoc($petugasQuery);
+	$_SESSION['name'] = $data['nama_petugas'];
 
 	// Mengatur level user berdasarkan data id level
-	if ($dataPetugas['id_level'] != null)
+	if ($data['level'] != null)
 	{
-		if ($dataPetugas['id_level'] == 1)
+		if ($data['level'] == 'administrator')
 		{
 			$_SESSION['level'] = 'admin';
 		}

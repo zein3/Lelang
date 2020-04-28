@@ -1,6 +1,5 @@
 <?php
 
-//Dicolong dari malasngoding
 function tgl_indo($tanggal){
 	$bulan = array (
 		1 =>   'Januari',

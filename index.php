@@ -58,7 +58,7 @@ session_start();
 
 		<!-- Login and Register Button -->
 		<?php 
-		if (!isset($_SESSION['name']))
+		if (!isset($_SESSION['level']))
 		{
 			// Berisi tombol login dan register
 			include 'ui/nav_logged_out.php';
@@ -67,7 +67,7 @@ session_start();
 
 		<!-- Logout Button dan Search Form -->
 		<?php
-		if (isset($_SESSION['name']))
+		if (isset($_SESSION['level']))
 		{
 			// Berisi form search dan tombol log out
 			include 'ui/nav_logged_in.php';

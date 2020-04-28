@@ -24,6 +24,10 @@
 						{
 							echo 'Data berhasil dihapus';
 						}
+						else if ($success == 'resetid')
+						{
+							echo 'Auto Increment berhasil di reset';
+						}
 					?>
 				</h3>
 			</div>

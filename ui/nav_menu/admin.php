@@ -1,1 +1,2 @@
 <li class="nav-item"><a class="nav-link text-white" id="daftarpetugas-tab" data-toggle="tab" href="#daftarpetugas">Daftarkan petugas</a></li>
+<li class="nav-item"><a class="nav-link text-white" href="utilities/reset_id.php">Reset Auto Increment</a></li>
