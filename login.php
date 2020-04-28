@@ -6,41 +6,47 @@ require('connection.php');
 
 // Mengambil data dari form
 $username = mysqli_real_escape_string($connection, $_POST['login-username']);
-$password = mysqli_real_escape_string($connection, $_POST['login-password']);
+$password = $_POST['login-password'];
 
 // Query untuk Login
-$query = mysqli_query($connection, "Call LoginQuery('$username', '$password')");
+$query = mysqli_query($connection, "Call LoginQuery('$username')");
 
 if (mysqli_num_rows($query) > 0)
 {
 	$data = mysqli_fetch_assoc($query);
-
-	// Hiraukan, buat testing aja
-	/*echo '<pre>';
-	print_r($data);
-	echo '</pre>';*/
-	
-	// Mengatur variable sesi nama jadi nama lengkap pengguna
-	$_SESSION['name'] = $data['nama_petugas'];
-
-	// Mengatur level user berdasarkan data id level
-	if ($data['level'] != null)
+	if (password_verify($password, $data['password']))
 	{
-		if ($data['level'] == 'administrator')
+		// Hiraukan, buat testing aja
+		/*echo '<pre>';
+		print_r($data);
+		echo '</pre>';*/
+	
+		// Mengatur variable sesi nama jadi nama lengkap pengguna
+		$_SESSION['name'] = $data['nama_petugas'];
+
+		// Mengatur level user berdasarkan data id level
+		if ($data['level'] != null)
 		{
-			$_SESSION['level'] = 'admin';
+			if ($data['level'] == 'administrator')
+			{
+				$_SESSION['level'] = 'admin';
+			}
+			else
+			{
+				$_SESSION['level'] = 'petugas';
+			}
 		}
 		else
 		{
-			$_SESSION['level'] = 'petugas';
+			$_SESSION['level'] = 'masyarakat';
 		}
+
+		header('Location: index.php');
 	}
 	else
 	{
-		$_SESSION['level'] = 'masyarakat';
+		header('Location: index.php?err=salah');
 	}
-
-	header('Location: index.php');
 }
 else
 {

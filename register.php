@@ -8,8 +8,8 @@ require('connection.php');
 $nama_lengkap = mysqli_real_escape_string($connection, $_POST['register-name']);
 $username = mysqli_real_escape_string($connection, $_POST['register-username']);
 $telp = mysqli_real_escape_string($connection, $_POST['register-telp']);
-$password1 = mysqli_real_escape_string($connection, $_POST['register-password1']);
-$password2 = mysqli_real_escape_string($connection, $_POST['register-password2']);
+$password1 = $_POST['register-password1'];
+$password2 = $_POST['register-password2'];
 
 //Mengecek apakah bagian konfirmasi passwordnya sama
 if ($password1 != $password2)
@@ -36,7 +36,7 @@ if (mysqli_num_rows($check) > 0)
 	return;
 }
 
-$password = $password1;
+$password = password_hash($password1, PASSWORD_DEFAULT);
 
 //Query untuk memasukkan data user ke Database
 $query = "Insert Into tb_masyarakat(nama_lengkap, username, password, telp) Values('$nama_lengkap', '$username', '$password', '$telp')";

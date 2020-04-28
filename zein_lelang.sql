@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 28, 2020 at 09:33 AM
+-- Generation Time: Apr 28, 2020 at 10:52 AM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 5.6.31
 
@@ -31,13 +31,13 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `DataBarang` ()  BEGIN
     From tb_barang;
     End$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `LoginQuery` (`nama_user` VARCHAR(25), `pass` VARCHAR(25))  Begin
+CREATE DEFINER=`root`@`localhost` PROCEDURE `LoginQuery` (`nama_user` VARCHAR(25))  Begin
 Select nama_petugas, username, password, tb_level.level From tb_petugas
 Inner Join tb_level On tb_petugas.id_level = tb_level.id_level
-Where username = nama_user And Password = pass
+Where username = nama_user
 UNION
 Select nama_lengkap, username, password, null From tb_masyarakat
-Where username = nama_user And password = pass;
+Where username = nama_user;
 End$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `ResetId` ()  BEGIN
@@ -160,10 +160,7 @@ CREATE TABLE `tb_masyarakat` (
 --
 
 INSERT INTO `tb_masyarakat` (`id_user`, `nama_lengkap`, `username`, `password`, `telp`) VALUES
-(1, 'Ade Budiawan', 'WibuJoJo', 'pipinpadaloxicopolis', '089658949682'),
-(2, 'asdasfda', 'asdasd', 'asdasdasd', '123123'),
-(3, 'test', 'test', 'testingg', '12345678'),
-(4, 'User', 'user', 'useruser', '0812345678');
+(1, 'User', 'user', '$2y$10$O.u04pD1f82431GTReyZ1uG2/fz5ZdPUgN002iB8wvqaIH5odXxP.', '0812345678');
 
 -- --------------------------------------------------------
 
@@ -175,7 +172,7 @@ CREATE TABLE `tb_petugas` (
   `id_petugas` int(11) NOT NULL,
   `nama_petugas` varchar(25) NOT NULL,
   `username` varchar(25) NOT NULL,
-  `password` varchar(25) NOT NULL,
+  `password` varchar(255) NOT NULL,
   `id_level` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -184,9 +181,8 @@ CREATE TABLE `tb_petugas` (
 --
 
 INSERT INTO `tb_petugas` (`id_petugas`, `nama_petugas`, `username`, `password`, `id_level`) VALUES
-(1, 'Admin', 'admin', 'admin', 1),
-(2, 'Petugas', 'petugas', 'petugas', 2),
-(3, 'budi', 'budi', 'budibudi', 2);
+(1, 'Admin', 'admin123', '$2y$10$2YSM9oJHIJScf2E776bY3uMqqUCivyafiZUWoUUoZ/jrk6dvwCW8i', 1),
+(2, 'Petugas', 'petugas123', '$2y$10$0aL7P2HFZn3yonB0yDzjWetLI1sBjP8UTQikgf3FfRVeqVQRCw46.', 2);
 
 --
 -- Indexes for dumped tables
@@ -263,12 +259,12 @@ ALTER TABLE `tb_level`
 -- AUTO_INCREMENT for table `tb_masyarakat`
 --
 ALTER TABLE `tb_masyarakat`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `tb_petugas`
 --
 ALTER TABLE `tb_petugas`
-  MODIFY `id_petugas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_petugas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- Constraints for dumped tables
 --

@@ -5,8 +5,8 @@ require('connection.php');
 
 $nama_petugas = mysqli_real_escape_string($connection, $_POST['tb-petugas_nama']);
 $username = mysqli_real_escape_string($connection, $_POST['tb-petugas_username']);
-$password1 = mysqli_real_escape_string($connection, $_POST['tb-petugas_password']);
-$password2 = mysqli_real_escape_string($connection, $_POST['tb-petugas_password2']);
+$password1 = $_POST['tb-petugas_password'];
+$password2 = $_POST['tb-petugas_password2'];
 $id_level = mysqli_real_escape_string($connection, $_POST['tb-petugas_level']);
 
 if ($password1 != $password2)
@@ -33,7 +33,7 @@ if (mysqli_num_rows($checkQuery) > 0)
 	return;
 }
 
-$password = $password1;
+$password = password_hash($password1, PASSWORD_DEFAULT);
 
 $query = "Insert Into tb_petugas (nama_petugas, username, password, id_level)
 		  Values ('$nama_petugas', '$username', '$password', '$id_level')";
