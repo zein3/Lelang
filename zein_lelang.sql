@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 27, 2020 at 05:01 AM
+-- Generation Time: Apr 28, 2020 at 09:33 AM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 5.6.31
 
@@ -30,6 +30,41 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `DataBarang` ()  BEGIN
 	Select *
     From tb_barang;
     End$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `LoginQuery` (`nama_user` VARCHAR(25), `pass` VARCHAR(25))  Begin
+Select nama_petugas, username, password, tb_level.level From tb_petugas
+Inner Join tb_level On tb_petugas.id_level = tb_level.id_level
+Where username = nama_user And Password = pass
+UNION
+Select nama_lengkap, username, password, null From tb_masyarakat
+Where username = nama_user And password = pass;
+End$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `ResetId` ()  BEGIN
+SET @num := 0;
+UPDATE tb_barang SET id_barang = @num := (@num+1);
+ALTER TABLE tb_barang AUTO_INCREMENT =1;
+
+SET @num := 0;
+UPDATE tb_petugas SET id_petugas = @num := (@num+1);
+ALTER TABLE tb_petugas AUTO_INCREMENT =1;
+
+SET @num := 0;
+UPDATE tb_masyarakat SET id_user = @num := (@num+1);
+ALTER TABLE tb_masyarakat AUTO_INCREMENT =1;
+
+SET @num := 0;
+UPDATE history_lelang SET id_history = @num := (@num+1);
+ALTER TABLE history_lelang AUTO_INCREMENT =1;
+
+SET @num := 0;
+UPDATE tb_lelang SET id_lelang = @num := (@num+1);
+ALTER TABLE tb_lelang AUTO_INCREMENT =1;
+
+SET @num := 0;
+UPDATE tb_level SET id_level = @num := (@num+1);
+ALTER TABLE tb_level AUTO_INCREMENT =1;
+END$$
 
 DELIMITER ;
 
@@ -87,13 +122,6 @@ CREATE TABLE `tb_lelang` (
   `status` enum('dibuka','ditutup') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `tb_lelang`
---
-
-INSERT INTO `tb_lelang` (`id_lelang`, `id_barang`, `tgl_lelang`, `harga_akhir`, `id_user`, `id_petugas`, `status`) VALUES
-(1, 1, '2020-04-27', 5500000, 1, 2, 'ditutup');
-
 -- --------------------------------------------------------
 
 --
@@ -123,7 +151,7 @@ CREATE TABLE `tb_masyarakat` (
   `id_user` int(11) NOT NULL,
   `nama_lengkap` varchar(25) NOT NULL,
   `username` varchar(25) NOT NULL,
-  `password` varchar(25) NOT NULL,
+  `password` varchar(255) NOT NULL,
   `telp` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -132,10 +160,10 @@ CREATE TABLE `tb_masyarakat` (
 --
 
 INSERT INTO `tb_masyarakat` (`id_user`, `nama_lengkap`, `username`, `password`, `telp`) VALUES
-(1, 'User', 'user', 'user', '081234567890'),
-(2, 'Ade Budiawan', 'WibuJoJo', 'pipinpadaloxicopolis', '089658949682'),
-(3, 'asdasfda', 'asdasd', 'asdasdasd', '123123'),
-(4, 'test', 'test', 'testingg', '12345678');
+(1, 'Ade Budiawan', 'WibuJoJo', 'pipinpadaloxicopolis', '089658949682'),
+(2, 'asdasfda', 'asdasd', 'asdasdasd', '123123'),
+(3, 'test', 'test', 'testingg', '12345678'),
+(4, 'User', 'user', 'useruser', '0812345678');
 
 -- --------------------------------------------------------
 
@@ -225,7 +253,7 @@ ALTER TABLE `tb_barang`
 -- AUTO_INCREMENT for table `tb_lelang`
 --
 ALTER TABLE `tb_lelang`
-  MODIFY `id_lelang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_lelang` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `tb_level`
 --
